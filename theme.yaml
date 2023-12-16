@@ -1,0 +1,7 @@
+attrs:
+    Plot:
+        outline_line_color: white
+        toolbar_location: above
+    Grid:
+        grid_line_dash: [6, 4]
+        grid_line_color: white
