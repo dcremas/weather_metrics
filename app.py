@@ -21,7 +21,7 @@ source = ColumnDataSource(data=dict(date=df[df['station_name'] == airports[0]]['
                                     precip=df[df['station_name'] == airports[0]]['precip_in']))
 
 plot_bp = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
-                 x_range=(dates[0], dates[479]), y_range=(28.5, 31.5),
+                 y_range=(28.5, 31.5),
                  height=400, width=400, margin=(10, 10, 10, 15), 
                  background_fill_color="#ebf2ff", 
                  sizing_mode="stretch_width")
@@ -32,7 +32,7 @@ plot_bp.circle('date', 'pressure', source=source, fill_color="white", size=2)
 plot_bp.yaxis.axis_label = 'Barometric Pressure'
 
 plot_temp = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
-                   x_range=(dates[0], dates[479]), y_range=(-25.0, 125.0),
+                   y_range=(-25.0, 125.0),
                    height=400, width=400, margin=(10, 10, 10, 15), 
                    background_fill_color="#feffeb", 
                    sizing_mode="stretch_width")
@@ -43,7 +43,7 @@ plot_temp.circle('date', 'temp', source=source, fill_color="white", size=2)
 plot_temp.yaxis.axis_label = 'Temperature'
 
 plot_humid = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
-                   x_range=(dates[0], dates[479]), y_range=(0.0, 100.0),
+                   y_range=(0.0, 100.0),
                    height=400, width=400, margin=(10, 10, 10, 15), 
                     background_fill_color="#ebf2ff", 
                    sizing_mode="stretch_width")
@@ -54,7 +54,7 @@ plot_humid.circle('date', 'humidity', source=source, fill_color="white", size=2)
 plot_humid.yaxis.axis_label = 'Humidity'
 
 plot_wind = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
-                   x_range=(dates[0], dates[479]), y_range=(0.0, 50.0),
+                   y_range=(0.0, 50.0),
                    height=400, width=400, margin=(10, 10, 10, 15), 
                    background_fill_color="#feffeb", 
                    sizing_mode="stretch_width")
