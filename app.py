@@ -58,7 +58,7 @@ plot_wind = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above"
                    height=400, width=400, margin=(10, 10, 10, 15), 
                    background_fill_color="#feffeb", 
                    sizing_mode="stretch_width")
-plot_wind.add_tools(HoverTool(tooltips=[('Date', '@date{%F}'), ('Time', '@date{%I:%M %p}'), ('Wind', '@wind_mph{0.2f}')],
+plot_wind.add_tools(HoverTool(tooltips=[('Date', '@date{%F}'), ('Time', '@date{%I:%M %p}'), ('Wind', '@wind{0.2f}')],
                          formatters={'@date': 'datetime'}, mode='vline'))
 plot_wind.line('date', 'wind', source=source)
 plot_wind.circle('date', 'wind', source=source, fill_color="white", size=2)
