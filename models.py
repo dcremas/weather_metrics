@@ -29,12 +29,15 @@ hf.temp_f,
 hf.wind_mph,
 hf.pressure_in,
 hf.precip_in,
-hf.humidity * 100
+hf.humidity * 100,
+tz.utc_offset
 FROM locations loc
 JOIN hourlyforecasts hf
     ON loc.station = hf.station
 JOIN regions rg
     ON loc.state = rg.state
+JOIN time_zones tz
+    ON rg.tz_abbreviation = tz.abbreviation
 ORDER BY loc.station_name, hf.time;
 '''
 
@@ -54,6 +57,7 @@ with psycopg2.connect(url_string) as connection:
     cursor.execute(query_data)
     response_data = cursor.fetchall()
     data = [x for x in response_data]
+    data = list(map(lambda x: (x[0], x[1] + timedelta(hours = x[7]), x[2], x[3], x[4], x[5], x[6]), data))
     cursor.execute(query_update)
     response_update = cursor.fetchall()
     update = response_update[0][0]
