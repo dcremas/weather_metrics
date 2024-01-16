@@ -73,7 +73,7 @@ plot_precip.vbar(x="date", top="precip", source=source)
 plot_precip.yaxis.axis_label = "Precip"
 
 desc = Div(text=(Path(__file__).parent / "description.html").read_text("utf8"), sizing_mode="stretch_width",
-           margin=(2, 2, 2, 15))
+           margin=(2, 2, 5, 15))
 
 def callback(attr, old, new):
     if new == 0:
@@ -92,7 +92,7 @@ def callback(attr, old, new):
                     precip=df[df['station_name'] == new]['precip_in'])
     source.data = data
 
-select_airport = Select(title="Select Airport:", value="", options=airports, margin=(10, 10, 10, 15))
+select_airport = Select(title="Select Airport:", value="", options=airports, margin=(5, 10, 5, 15))
 select_airport.on_change('value', callback)
 
 update_text_1 = f'- The Postgresql AWS Cloud Database that feeds the visuals was last updated:'
@@ -103,12 +103,17 @@ p1 = Paragraph(text=update_text_1, width=800, height=10, margin=(25, 25, 5, 15))
 p2 = Paragraph(text=update_text_2, width=800, height=10, margin=(5, 25, 5, 15))
 p3 = Paragraph(text=update_text_3, width=800, height=10, margin=(5, 25, 25, 15))
 
+hyperlink_github = Div(
+    text="""<p><i>To see the full codebase for this interactive web-based visualization: </i><a href="https://github.com/dcremas/weather_metrics">Link to my github account</a></p>""",
+    width=800, height=25, margin=(10, 10, 10, 15)
+    )
+
 hyperlink_div = Div(
     text="""<a href="https://dataviz.dustincremascoli.com">Go back to Data Visualizations Main Page</a>""",
     width=400, height=100, margin=(10, 10, 10, 15)
     )
 
-curdoc().add_root(column(desc, select_airport,
+curdoc().add_root(column(desc, hyperlink_github, select_airport,
                          row(plot_bp, plot_temp, sizing_mode="inherit"),
                          row(plot_humid, plot_wind, sizing_mode="inherit"),
                          row(plot_precip, sizing_mode="inherit"),
