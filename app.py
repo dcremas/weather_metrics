@@ -1,14 +1,17 @@
 from pathlib import Path
+from datetime import datetime, timedelta
 
 import pandas as pd
 import numpy as np
 
 from bokeh.layouts import column, row
-from bokeh.models import ColumnDataSource, Div, Select, RangeTool, HoverTool, Paragraph
+from bokeh.models import ColumnDataSource, Div, Select, RangeTool, HoverTool, Paragraph,  Span
 from bokeh.plotting import figure, curdoc
 from bokeh.themes import Theme
 
 from models import airports, data, headers, update
+
+dt_now = datetime.now() - timedelta(hours = 6)
 
 df = pd.DataFrame(data, columns=headers)
 df['time'] = np.array(df['time'], dtype=np.datetime64)
@@ -72,6 +75,14 @@ plot_precip = figure(height=150, width=400, title="", toolbar_location=None,
 plot_precip.vbar(x="date", top="precip", source=source)
 plot_precip.yaxis.axis_label = "Precip"
 
+vline_now = Span(location=dt_now, dimension='height',
+                 line_color='#009E73', line_width=1)
+plot_bp.add_layout(vline_now)
+plot_temp.add_layout(vline_now)
+plot_humid.add_layout(vline_now)
+plot_wind.add_layout(vline_now)
+plot_precip.add_layout(vline_now)
+
 desc = Div(text=(Path(__file__).parent / "description.html").read_text("utf8"), sizing_mode="stretch_width",
            margin=(2, 2, 5, 15))
 
@@ -92,7 +103,7 @@ def callback(attr, old, new):
                     precip=df[df['station_name'] == new]['precip_in'])
     source.data = data
 
-select_airport = Select(title="Select Airport:", value="", options=airports, margin=(5, 10, 5, 15))
+select_airport = Select(title="Select US Airport:", value="", options=airports, margin=(5, 10, 5, 15))
 select_airport.on_change('value', callback)
 
 update_text_1 = f'- The Postgresql AWS Cloud Database that feeds the visuals was last updated:'

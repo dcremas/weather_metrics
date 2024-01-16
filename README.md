@@ -19,6 +19,7 @@
 ##### Technologies:
 
 - [ ] Python
+- [ ] SQL
 - [ ] Apple WeatherKit REST API.
 - [ ] Bokeh.
 - [ ] HTML and CSS, plus a little Javascript.
