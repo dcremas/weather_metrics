@@ -31,7 +31,7 @@ plot_bp = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
 plot_bp.add_tools(HoverTool(tooltips=[('Date', '@date{%F}'), ('Time', '@date{%I:%M %p}'), ('Pressure', '@pressure{0.2f}')],
                          formatters={'@date': 'datetime'}, mode='vline'))
 plot_bp.line('date', 'pressure', source=source)
-plot_bp.circle('date', 'pressure', source=source, fill_color="white", size=2)
+plot_bp.scatter('date', 'pressure', source=source, fill_color="white", size=2, marker="circle")
 plot_bp.yaxis.axis_label = 'Barometric Pressure'
 
 plot_temp = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
@@ -42,7 +42,7 @@ plot_temp = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above"
 plot_temp.add_tools(HoverTool(tooltips=[('Date', '@date{%F}'), ('Time', '@date{%I:%M %p}'), ('Temperature', '@temp{0.2f}')],
                          formatters={'@date': 'datetime'}, mode='vline'))
 plot_temp.line('date', 'temp', source=source)
-plot_temp.circle('date', 'temp', source=source, fill_color="white", size=2)
+plot_temp.scatter('date', 'temp', source=source, fill_color="white", size=2, marker="circle")
 plot_temp.yaxis.axis_label = 'Temperature'
 
 plot_humid = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
@@ -53,7 +53,7 @@ plot_humid = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above
 plot_humid.add_tools(HoverTool(tooltips=[('Date', '@date{%F}'), ('Time', '@date{%I:%M %p}'), ('Humidity', '@humidity{0.2f}')],
                          formatters={'@date': 'datetime'}, mode='vline'))
 plot_humid.line('date', 'humidity', source=source)
-plot_humid.circle('date', 'humidity', source=source, fill_color="white", size=2)
+plot_humid.scatter('date', 'humidity', source=source, fill_color="white", size=2, marker="circle")
 plot_humid.yaxis.axis_label = 'Humidity'
 
 plot_wind = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
@@ -64,7 +64,7 @@ plot_wind = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above"
 plot_wind.add_tools(HoverTool(tooltips=[('Date', '@date{%F}'), ('Time', '@date{%I:%M %p}'), ('Wind', '@wind{0.2f}')],
                          formatters={'@date': 'datetime'}, mode='vline'))
 plot_wind.line('date', 'wind', source=source)
-plot_wind.circle('date', 'wind', source=source, fill_color="white", size=2)
+plot_wind.scatter('date', 'wind', source=source, fill_color="white", size=2, marker="circle")
 plot_wind.yaxis.axis_label = 'Wind'
 
 plot_precip = figure(height=150, width=400, title="", toolbar_location=None,
