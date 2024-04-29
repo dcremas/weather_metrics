@@ -103,7 +103,7 @@ def callback(attr, old, new):
                     precip=df[df['station_name'] == new]['precip_in'])
     source.data = data
 
-select_airport = Select(title="Select US Airport:", value="", options=airports, margin=(5, 10, 5, 15))
+select_airport = Select(title="Select US Airport:", value=airports[18], options=airports, margin=(5, 10, 5, 15))
 select_airport.on_change('value', callback)
 
 update_text_1 = f'- The Postgresql AWS Cloud Database that feeds the visuals was last updated:'
