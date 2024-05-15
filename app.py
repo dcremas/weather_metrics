@@ -16,12 +16,12 @@ dt_now = datetime.now() - timedelta(hours = 6)
 df = pd.DataFrame(data, columns=headers)
 df['time'] = np.array(df['time'], dtype=np.datetime64)
 dates = np.array(df['time'], dtype=np.datetime64)
-source = ColumnDataSource(data=dict(date=df[df['station_name'] == airports[0]]['time'],
-                                    temp=df[df['station_name'] == airports[0]]['temp_f'],
-                                    pressure=df[df['station_name'] == airports[0]]['pressure_in'],
-                                    humidity=df[df['station_name'] == airports[0]]['humidity'],
-                                    wind=df[df['station_name'] == airports[0]]['wind_mph'],
-                                    precip=df[df['station_name'] == airports[0]]['precip_in']))
+source = ColumnDataSource(data=dict(date=df[df['station_name'] == airports[18]]['time'],
+                                    temp=df[df['station_name'] == airports[18]]['temp_f'],
+                                    pressure=df[df['station_name'] == airports[18]]['pressure_in'],
+                                    humidity=df[df['station_name'] == airports[18]]['humidity'],
+                                    wind=df[df['station_name'] == airports[18]]['wind_mph'],
+                                    precip=df[df['station_name'] == airports[18]]['precip_in']))
 
 plot_bp = figure(tools="xpan", x_axis_type="datetime", x_axis_location="above",
                  y_range=(28.5, 31.5),
