@@ -61,6 +61,6 @@ with psycopg2.connect(url_string) as connection:
     cursor.execute(query_update)
     response_update = cursor.fetchall()
     update = response_update[0][0]
-    update = (update - timedelta(hours = 6))
+    update = (update - timedelta(hours = 5))
     
 headers = ['station_name', 'time', 'temp_f', 'wind_mph', 'pressure_in', 'precip_in', 'humidity']
